@@ -1,0 +1,9 @@
+name: PlacedBlockCtrlZ
+main: com.rogermiranda1000.placedblockctrlz.Main
+version: "${project.version}"
+author: rogermiranda1000
+api-version: 1.13
+commands:
+  ctrl-z:
+    description: Undo the last placed block
+    usage: /<command>

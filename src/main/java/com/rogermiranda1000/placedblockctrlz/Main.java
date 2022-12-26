@@ -12,16 +12,14 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * This is an example of a plugin to debug. Don't use this plugin in your server.
+ */
 public class Main extends JavaPlugin implements Listener {
     /**
      * What was the last block placed
      */
     private Block lastPlacedBlock;
-
-    /**
-     * Who place the latest block
-     */
-    private Player lastPlacedBlockAuthor;
 
     @Override
     public void onEnable() {
@@ -30,8 +28,7 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        this.lastPlacedBlock = event.getBlockPlaced();
-        this.lastPlacedBlockAuthor = event.getPlayer();
+        this.lastPlacedBlock = event.getBlock();
     }
 
     @Override
@@ -41,7 +38,7 @@ public class Main extends JavaPlugin implements Listener {
         // ctrl-z; undo the last placed block
         Material itemToGiveToPlayer = this.lastPlacedBlock.getType();
         this.lastPlacedBlock.setType(Material.AIR); // remove the block
-        this.lastPlacedBlockAuthor.getInventory().addItem(new ItemStack(itemToGiveToPlayer,1)); // add the block to the inventory
+        ((Player)sender).getInventory().addItem(new ItemStack(itemToGiveToPlayer,1)); // add the block to the inventory
 
         return true;
     }

@@ -33,8 +33,6 @@ public class Main extends JavaPlugin implements Listener {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!args[0].equals("ctrl-z")) return false;
-
         // ctrl-z; undo the last placed block
         Material itemToGiveToPlayer = this.lastPlacedBlock.getType();
         this.lastPlacedBlock.setType(Material.AIR); // remove the block

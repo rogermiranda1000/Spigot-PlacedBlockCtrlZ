@@ -17,8 +17,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>dev.watchwolf</groupId>
-            <artifactId>watchwolf-tester</artifactId>
+            <groupId>com.github.rogermiranda1000</groupId>
+            <artifactId>WatchWolf-Tester</artifactId>
             <version>0.1.1</version>
             <scope>compile</scope>
         </dependency>
@@ -73,8 +73,8 @@
 
     <repositories>
         <repository>
-            <id>watchwolf-tester-repo</id>
-            <url>https://maven.pkg.github.com/rogermiranda1000/watchwolf-tester</url>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
 

@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PlacedBlockCtrlZShould extends AbstractTest {
     @Override
     public String getConfigFile() {
-        return "src/test/java/config.yaml";
+        return "src/test/resources/config.yaml";
     }
 
     /**
@@ -86,7 +86,10 @@ public class PlacedBlockCtrlZShould extends AbstractTest {
         clientConnector2.setBlock(whatBlockWillBePlaced2, whereToPlaceTheBlock2); // place the second block
         clientConnector1.runCommand("ctrl-z"); // client 1 undo the first block
 
-        assertEquals(0, getItemAmounts(clientConnector1.getInventory().getItems()).get(whatBlockWillBePlaced2.getItemType())); // we DON'T expect 1 diamond block back
+        // we DON'T expect 1 diamond block back
+        int numDiamondBlocksOnPlayer1 = getItemAmounts(clientConnector1.getInventory().getItems()).get(whatBlockWillBePlaced2.getItemType());
+        assertEquals(0, numDiamondBlocksOnPlayer1,
+                    "We expect 0 diamond blocks on player 1; got " + numDiamondBlocksOnPlayer1 + " instead");
 
         assertEquals(Blocks.AIR, connector.server.getBlock(whereToPlaceTheBlock1)); // we expect air in the place we've put the block
         assertEquals(1, getItemAmounts(clientConnector1.getInventory().getItems()).get(whatBlockWillBePlaced1.getItemType())); // we expect 1 dirt block back
